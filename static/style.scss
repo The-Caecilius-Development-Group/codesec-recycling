@@ -27,6 +27,7 @@ body {
     width: 100%;
     align-items: center;
     height: 100vh;
+    margin-bottom: 50px;
 }
 
 .recycling-header {
@@ -60,8 +61,11 @@ body {
     width: 100%;
     height: 100%;
     background: url("images/trash.jpg");
-    background-size: 50%;
+    background-size: cover;
     z-index: -1;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .header-question {
@@ -72,6 +76,49 @@ body {
     @media only screen and (min-width: $break-phone) {
         position: absolute;
         left: 50px;
-        bottom: 50px;
+        bottom: 100px;
     }
+}
+
+.header-divider {
+    position: relative;
+    top: -30px;
+}
+
+.fact {
+    width: 70%;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 50px;
+    color: $grey;
+}
+
+.bold {
+    font-weight: bold;
+    color: $red;
+}
+
+.fact-info {
+    width: 40%;
+}
+.fact-info.left {
+    text-align: right;
+}
+.fact-info.right {
+    text-align: left;
+}
+
+.hide-counter {
+    background-color: $red;
+}
+@keyframes show-counter-anim {
+    from {
+        background-color: $red;
+    }
+    to {
+        background-color: transparent;
+    }
+}
+.show-counter {
+    animation: show-counter-anim 0.5s;
 }

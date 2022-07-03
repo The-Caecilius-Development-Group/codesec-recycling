@@ -1,6 +1,7 @@
 use yew::prelude::*;
 
 mod header;
+mod fact;
 
 struct App;
 
@@ -17,6 +18,13 @@ impl Component for App {
         html! {
             <div class={classes!("main-flex")}>
                 <header::Header />
+                <fact::Fact direction={fact::FactDirection::Left}>
+                    <span>
+                        {"The average person throws away "}
+                        <fact::counter::Counter target={400} suffix={"kg"} length={3} interval={5}/>
+                        {" of waste every year."}
+                    </span>
+                </fact::Fact>
             </div>
         }
     }
