@@ -54,7 +54,7 @@ body {
 }
 
 .divider {
-    clip-path: polygon(0 0, 10% 0, 100% 100%, 90% 100%);
+    clip-path: polygon(0 0, 15% 0, 100% 100%, 85% 100%);
     @media only screen and (max-width: $break-phone) {display: none;}
     position: absolute;
     width: 100%;
