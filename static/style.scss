@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Oswald:wght@600&display=swap');
+
+$grey: #85887E;
+$purple: #663F68;
+$red: #FF3131;
+$pink: #F45A5F;
+$black: #1F0F20;
+
+$break-phone: 768px;
+
+body {
+    background-color: $black;
+    font-family: 'Lato', sans-serif;
+    padding: 0;
+    margin: 0;
+}
+
+.main-flex {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    height: 100vh;
+}
+
+.recycling-header {
+    border-radius: 50% 50% 54% 46% / 76% 47% 53% 24%;
+    width: 500px;
+    height: 500px;
+    @media only screen and (max-width: $break-phone) {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1 / 1;
+    }
+    @media only screen and (min-width: $break-phone) {
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+    background: linear-gradient(24deg, rgba(244,90,95,1) 0%, rgba(249,148,189,1) 100%);
+    color: $purple;
+    font-size: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Oswald', sans-serif;
+    z-index: 1;
+}
+
+.divider {
+    clip-path: polygon(0 0, 10% 0, 100% 100%, 90% 100%);
+    @media only screen and (max-width: $break-phone) {display: none;}
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url("images/trash.jpg");
+    background-size: 50%;
+    z-index: -1;
+}
+
+.header-question {
+    color: white;
+    font-weight: bold;
+    font-size: 100px;
+    text-align: center;
+    @media only screen and (min-width: $break-phone) {
+        position: absolute;
+        left: 50px;
+        bottom: 50px;
+    }
+}

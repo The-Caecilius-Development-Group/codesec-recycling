@@ -1,0 +1,78 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato&family=Oswald:wght@600&display=swap");
+body {
+  background-color: #1F0F20;
+  font-family: "Lato", sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+.main-flex {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  height: 100vh;
+}
+
+.recycling-header {
+  border-radius: 50% 50% 54% 46%/76% 47% 53% 24%;
+  width: 500px;
+  height: 500px;
+  background: linear-gradient(24deg, #f45a5f 0%, #f994bd 100%);
+  color: #663F68;
+  font-size: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Oswald", sans-serif;
+  z-index: 1;
+}
+@media only screen and (max-width: 768px) {
+  .recycling-header {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1/1;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .recycling-header {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+}
+
+.divider {
+  clip-path: polygon(0 0, 10% 0, 100% 100%, 90% 100%);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: url("images/trash.jpg");
+  background-size: 50%;
+  z-index: -1;
+}
+@media only screen and (max-width: 768px) {
+  .divider {
+    display: none;
+  }
+}
+
+.header-question {
+  color: white;
+  font-weight: bold;
+  font-size: 100px;
+  text-align: center;
+}
+@media only screen and (min-width: 768px) {
+  .header-question {
+    position: absolute;
+    left: 50px;
+    bottom: 50px;
+  }
+}
