@@ -46,7 +46,7 @@ impl Component for Counter {
         }
     }
 
-    fn create(ctx: &Context<Self>) -> Self {
+    fn create(_ctx: &Context<Self>) -> Self {
         Self {
             uncovered: false,
             n: 0,

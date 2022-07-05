@@ -1,21 +1,30 @@
-use yew::prelude::*;
-
+mod map;
 mod header;
 mod fact;
+use yew::prelude::*;
+use map::MapComponent;
 
-struct App;
+enum Msg {
+}
 
-impl Component for App {
-    type Message = ();
+struct Model {
+}
 
+impl Component for Model {
+    type Message = Msg;
     type Properties = ();
 
-    fn create(_ctx: &Context<Self>) -> Self {
-        App
+    fn create(ctx: &Context<Self>) -> Self {
+        Self {}
     }
 
-    fn view(&self, _ctx: &Context<Self>) -> Html {
+    fn update(&mut self, ctx: &Context<Self>, msg: Self::Message) -> bool {
+        true
+    } 
+
+    fn view(&self, ctx: &Context<Self>) -> Html {
         html! {
+            <div>
             <div class={classes!("main-flex")}>
                 <header::Header />
                 <fact::Fact direction={fact::FactDirection::Left}>
@@ -25,11 +34,13 @@ impl Component for App {
                         {" of waste every year."}
                     </span>
                 </fact::Fact>
+                <MapComponent / >
+            </div>
             </div>
         }
     }
 }
 
 fn main() {
-    yew::start_app::<App>();
+    yew::start_app::<Model>();
 }
