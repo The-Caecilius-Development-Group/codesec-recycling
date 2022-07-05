@@ -7,6 +7,4 @@ edition = "2021"
 
 [dependencies]
 gloo-timers = "0.2.4"
-log = "0.4.17"
-wasm-logger = "0.2.0"
-yew = {"git" = "https://github.com/yewstack/yew"}
+yew = "0.19.3"
