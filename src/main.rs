@@ -24,6 +24,7 @@ impl Component for App {
                         <fact::counter::Counter target={400} suffix={"kg"} length={3} interval={5}/>
                         {" of waste every year."}
                     </span>
+                    <fact::pictogram::Pictogram delay={5} row_width={10} total={57}>{"h"}</fact::pictogram::Pictogram>
                 </fact::Fact>
             </div>
         }
@@ -31,5 +32,6 @@ impl Component for App {
 }
 
 fn main() {
-    yew::start_app::<App>();
+    wasm_logger::init(wasm_logger::Config::default());
+    yew::Renderer::<App>::new().render();
 }
