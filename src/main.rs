@@ -24,7 +24,9 @@ impl Component for App {
                         <fact::counter::Counter target={400} suffix={"kg"} length={3} interval={5}/>
                         {" of waste every year."}
                     </span>
-                    <fact::pictogram::Pictogram delay={15} row_width={10} total={57}>{"h"}</fact::pictogram::Pictogram>
+                    <fact::pictogram::Pictogram delay={15} row_width={10} total={57}>
+                    <i class="gg-shopping-bag"></i>
+                    </fact::pictogram::Pictogram>
                 </fact::Fact>
             </div>
         }

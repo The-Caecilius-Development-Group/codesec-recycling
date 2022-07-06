@@ -37,8 +37,8 @@ impl Reducible for Uncovered {
 
 type FactContext = UseReducerHandle<Uncovered>;
 
-#[function_component(Fact)]
-pub fn fact(props: &FactProps) -> Html {
+#[function_component]
+pub fn Fact(props: &FactProps) -> Html {
     let mut chiter = props.children.iter();
     let text = chiter.next().unwrap_or_default();
     let graphic = chiter.next().unwrap_or_default();

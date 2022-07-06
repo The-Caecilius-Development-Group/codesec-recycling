@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato&family=Oswald:wght@600&display=swap');
+@import url('https://css.gg/shopping-bag.css');
 
 $grey: #85887E;
 $purple: #663F68;
@@ -122,4 +123,9 @@ body {
 }
 .show-counter {
     animation: show-counter-anim 0.5s;
+}
+
+.pictogram-row {
+    display: flex;
+    flex-direction: row;
 }
