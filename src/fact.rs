@@ -24,22 +24,25 @@ pub struct FactProps {
 }
 
 #[derive(Clone, PartialEq, Debug)]
-pub struct FactContext {
+pub struct Uncovered {
     uncovered: bool
 }
-impl FactContext {
-    pub fn get<T: Component>(ctx: &Context<T>) -> Self {
-        let (context, _) = ctx.link().context::<FactContext>(Callback::noop()).unwrap();
-        context
+impl Reducible for Uncovered {
+    type Action = bool;
+
+    fn reduce(self: Rc<Self>, action: Self::Action) -> Rc<Self> {
+        Self {uncovered: action}.into()
     }
 }
 
-#[function_component]
-pub fn Fact(props: &FactProps) -> Html {
+type FactContext = UseReducerHandle<Uncovered>;
+
+#[function_component(Fact)]
+pub fn fact(props: &FactProps) -> Html {
     let mut chiter = props.children.iter();
     let text = chiter.next().unwrap_or_default();
     let graphic = chiter.next().unwrap_or_default();
-    let context = FactContext(Rc::new(RefCell::new(false)));
+    let context = use_reducer(|| Uncovered {uncovered: false});
     html! {
         <div class={classes!("fact")}>
             <ContextProvider<FactContext> {context}>

@@ -35,13 +35,13 @@ impl Component for Counter {
                 true
             }
             CounterMessage::Uncover => {
-                let context = FactContext::get(ctx);
-                if !*context.0.borrow() {
+                let (context, _) = ctx.link().context::<FactContext>(Callback::noop()).unwrap();
+                if !context.uncovered {
                     let link = ctx.link().clone();
                     self.clock_handle = Some(Interval::new(ctx.props().interval, move || {
                         link.send_message(CounterMessage::UpdateN);
                     }));
-                    *context.0.borrow_mut() = true;
+                    context.dispatch(true);
                     true
                 } else {false}
             }
@@ -58,8 +58,8 @@ impl Component for Counter {
     fn view(&self, ctx: &Context<Self>) -> Html {
         let text = format!("{:0width$}", self.n, width=ctx.props().length);
         let hover = ctx.link().callback(|_| CounterMessage::Uncover);
-        let context = FactContext::get(ctx);
-        let hide = if *context.0.borrow() {"show-counter"} else {"hide-counter"};
+        let (context, _) = ctx.link().context::<FactContext>(Callback::noop()).unwrap();
+        let hide = if context.uncovered {"show-counter"} else {"hide-counter"};
         html! {
             <span class={classes!("bold", hide)} onmouseenter={hover}>
                 {text}{ctx.props().suffix.clone()}
