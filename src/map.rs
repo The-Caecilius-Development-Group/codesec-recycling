@@ -5,7 +5,7 @@ use yew::prelude::*;
 use yew::{
     Html, Component
 };
-use web_sys::{Element, HtmlElement, Node, Navigator}; 
+use web_sys::{Element, HtmlElement, Node}; 
 use gloo_utils::document;
 
 pub enum Msg {
@@ -34,7 +34,7 @@ impl Component for MapComponent {
     type Message = Msg;
     type Properties = Props;
 
-    fn create(ctx: &Context<Self>) -> Self {
+    fn create(_ctx: &Context<Self>) -> Self {
         let container: Element = document().create_element("div").unwrap();
         let container: HtmlElement = container.dyn_into().unwrap();
         container.set_class_name("map");
@@ -46,7 +46,8 @@ impl Component for MapComponent {
         }
     }
 
-    fn rendered(&mut self, ctx: &Context<Self>, first_render: bool) {
+    fn rendered(&mut self, _ctx: &Context<Self>, first_render: bool) {
+        // Makes the map come into view if it is the first time the map is being shown after reloading.
         if first_render {
             self.map.setView(&LatLng::new(51.509865, -0.118092), 11.0);
             add_tile_layer(&self.map);
@@ -55,7 +56,7 @@ impl Component for MapComponent {
         }
     }
 
-    fn update(&mut self, ctx: &Context<Self>, msg: Self::Message) -> bool {
+    fn update(&mut self, _ctx: &Context<Self>, msg: Self::Message) -> bool {
         match msg {
             Print => {
                 self.n += 1;

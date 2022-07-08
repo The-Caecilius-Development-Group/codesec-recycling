@@ -547,12 +547,12 @@ function getImports() {
     imports.wbg.__wbindgen_throw = function(arg0, arg1) {
         throw new Error(getStringFromWasm0(arg0, arg1));
     };
-    imports.wbg.__wbindgen_closure_wrapper838 = function(arg0, arg1, arg2) {
-        const ret = makeMutClosure(arg0, arg1, 131, __wbg_adapter_20);
+    imports.wbg.__wbindgen_closure_wrapper1025 = function(arg0, arg1, arg2) {
+        const ret = makeMutClosure(arg0, arg1, 154, __wbg_adapter_20);
         return addHeapObject(ret);
     };
-    imports.wbg.__wbindgen_closure_wrapper3120 = function(arg0, arg1, arg2) {
-        const ret = makeClosure(arg0, arg1, 134, __wbg_adapter_23);
+    imports.wbg.__wbindgen_closure_wrapper3450 = function(arg0, arg1, arg2) {
+        const ret = makeClosure(arg0, arg1, 157, __wbg_adapter_23);
         return addHeapObject(ret);
     };
 
@@ -588,7 +588,7 @@ function initSync(bytes) {
 
 async function init(input) {
     if (typeof input === 'undefined') {
-        input = new URL('codesec-recycling-70919b8566d6bf02_bg.wasm', import.meta.url);
+        input = new URL('codesec-recycling-f0f62dc3ddc16de_bg.wasm', import.meta.url);
     }
     const imports = getImports();
 

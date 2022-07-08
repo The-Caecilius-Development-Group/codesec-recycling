@@ -345,7 +345,7 @@ body {
   margin: 0;
 }
 
-.main-flex {
+.main-flex, .messages {
   display: flex;
   flex-direction: column;
 }
@@ -496,4 +496,19 @@ body .control {
 }
 body .control button {
   margin: 0.5em;
+}
+
+.messages {
+  align-items: center;
+  font-family: "Lato", sans-serif;
+  font-size: 50px;
+  color: #85887E;
+  outline: white solid 10px;
+  background: white;
+  margin-bottom: 50px;
+  margin-top: 50px;
+}
+
+.id {
+  margin-bottom: 100px;
 }

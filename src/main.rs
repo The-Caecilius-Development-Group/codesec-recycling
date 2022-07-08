@@ -1,6 +1,7 @@
 mod map;
 mod header;
 mod fact;
+mod messages;
 use yew::prelude::*;
 use map::MapComponent;
 
@@ -14,15 +15,15 @@ impl Component for Model {
     type Message = Msg;
     type Properties = ();
 
-    fn create(ctx: &Context<Self>) -> Self {
+    fn create(_ctx: &Context<Self>) -> Self {
         Self {}
     }
 
-    fn update(&mut self, ctx: &Context<Self>, msg: Self::Message) -> bool {
+    fn update(&mut self, _ctx: &Context<Self>, _msg: Self::Message) -> bool {
         true
     } 
 
-    fn view(&self, ctx: &Context<Self>) -> Html {
+    fn view(&self, _ctx: &Context<Self>) -> Html {
         html! {
             <div>
             <div class={classes!("main-flex")}>
@@ -36,6 +37,7 @@ impl Component for Model {
                 </fact::Fact>
                 <MapComponent / >
             </div>
+                <messages::Messages />
             </div>
         }
     }
