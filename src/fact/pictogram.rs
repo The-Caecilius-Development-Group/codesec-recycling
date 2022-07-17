@@ -30,25 +30,21 @@ impl Component for Pictogram {
     fn create(ctx: &Context<Self>) -> Self {
         let (_, _context_handle) = ctx.link()
             .context(ctx.link().callback(|context| {
-                log::info!("callback context update");
                 PictogramMessage::ContextUpdate(context)
             }))
             .unwrap();
-        log::info!("yeah I've got a context {:?}", _context_handle);
         Pictogram { 
             clock_handle: None,
             rows: vec![vec![]],
-            element: ctx.props().children.iter().next().unwrap(),
+            element: html!(<div class={classes!("pictogram-element")}>{ctx.props().children.iter().next().unwrap()}</div>),
             n: 0,
             _context_handle
         }
     }
 
     fn update(&mut self, ctx: &Context<Self>, msg: Self::Message) -> bool {
-        log::info!("update");
         match msg {
             PictogramMessage::UpdateGraph => {
-                
                 if self.rows.last().unwrap().len() == ctx.props().row_width {
                     // Make a new row
                     self.rows.push(vec![self.element.clone()]);
@@ -72,8 +68,8 @@ impl Component for Pictogram {
     }
 
     fn view(&self, _ctx: &Context<Self>) -> Html {
-        let rendered_rows = self.rows.iter().map(
-            |r| html!(<div class="pictogram-row">{r.clone()}</div>)
+        let rendered_rows = self.rows.iter().enumerate().map(
+            |(n, r)| html!(<div key={n} class="pictogram-row">{r.clone()}</div>)
         );
         html! {
             <div class="pictogram">
