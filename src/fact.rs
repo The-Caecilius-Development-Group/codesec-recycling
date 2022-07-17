@@ -1,8 +1,12 @@
+use std::{cell::RefCell, rc::Rc};
+
 use yew::prelude::*;
 
 pub mod counter;
+pub mod pictogram;
 
 #[derive(PartialEq, Clone, Copy, Debug)]
+#[allow(dead_code)]
 pub enum FactDirection {Left, Right}
 impl FactDirection {
     fn class(&self) -> &'static str {
@@ -19,22 +23,32 @@ pub struct FactProps {
     pub children: Children
 }
 
-pub struct Fact;
-impl Component for Fact {
-    type Message = ();
+#[derive(Clone, PartialEq, Debug)]
+pub struct Uncovered {
+    uncovered: bool
+}
+impl Reducible for Uncovered {
+    type Action = bool;
 
-    type Properties = FactProps;
-
-    fn create(_ctx: &Context<Self>) -> Self {
-        Fact
+    fn reduce(self: Rc<Self>, action: Self::Action) -> Rc<Self> {
+        Self {uncovered: action}.into()
     }
+}
 
-    fn view(&self, ctx: &Context<Self>) -> Html {
-        let text = ctx.props().children.iter().next().unwrap_or_default();
-        html! {
-            <div class={classes!("fact")}>
-                <div class={classes!("fact-info", ctx.props().direction.class())}>{text}</div>
-            </div>
-        }
+type FactContext = UseReducerHandle<Uncovered>;
+
+#[function_component]
+pub fn Fact(props: &FactProps) -> Html {
+    let mut chiter = props.children.iter();
+    let text = chiter.next().unwrap_or_default();
+    let graphic = chiter.next().unwrap_or_default();
+    let context = use_reducer(|| Uncovered {uncovered: false});
+    html! {
+        <div class={classes!("fact")}>
+            <ContextProvider<FactContext> {context}>
+            <div class={classes!("fact-info", props.direction.class())}>{text}</div>
+            <div class={classes!("fact-graphic")}>{graphic}</div>
+            </ContextProvider<FactContext>>
+        </div>
     }
 }

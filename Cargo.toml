@@ -16,3 +16,9 @@ gloo-utils = "0.1.4"
 [dependencies.web-sys]
 version = "0.3"
 features = ["HtmlAnchorElement", "console", "Window", "Document", "Navigator", "InputEvent"]
+log = "0.4.17"
+wasm-logger = "0.2.0"
+
+[dependencies.yew]
+git = "https://github.com/yewstack/yew"
+features = ["csr"]

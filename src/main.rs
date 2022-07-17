@@ -17,20 +17,22 @@ enum Route {
 
 #[function_component]
 pub fn App() -> Html{
-    html! {
-        <div>
-        <div class={classes!("main-flex")}>
-            <header::Header />
-            <fact::Fact direction={fact::FactDirection::Left}>
-                <span>
-                    {"The average person throws away "}
-                    <fact::counter::Counter target={400} suffix={"kg"} length={3} interval={5}/>
-                    {" of waste every year."}
-                </span>
-            </fact::Fact>
-            <MapComponent / >
-        </div>
-        </div>
+     html! {
+            <div class={classes!("main-flex")}>
+                <header::Header />
+                <fact::Fact direction={fact::FactDirection::Left}>
+                    <span>
+                        {"The average person throws away "}
+                        <fact::counter::Counter target={400} suffix={"kg"} length={3} interval={5}/>
+                        {" of waste every year."}
+                    </span>
+                    <fact::pictogram::Pictogram delay={15} row_width={10} total={57}>
+                    <i class="gg-shopping-bag"></i>
+                    </fact::pictogram::Pictogram>
+                </fact::Fact>
+                < MapComponent />
+            </div>
+        }
     }
 }
 

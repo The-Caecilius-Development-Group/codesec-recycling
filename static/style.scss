@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato&family=Oswald:wght@600&display=swap');
 @import "normalise";
 
+@import url('https://css.gg/shopping-bag.css');
+
 $grey: #85887E;
 $purple: #663F68;
 $red: #FF3131;
@@ -92,6 +94,7 @@ body {
     flex-wrap: wrap;
     font-size: 50px;
     color: $grey;
+    margin-bottom: 40px;
 }
 
 .bold {
@@ -123,6 +126,7 @@ body {
 .show-counter {
     animation: show-counter-anim 0.5s;
 }
+
 
 #map { height: 180px; }
 
@@ -178,3 +182,9 @@ body {
 .id {
     margin-bottom: 100px;
 }
+
+.pictogram-row {
+    display: flex;
+    flex-direction: row;
+}
+
