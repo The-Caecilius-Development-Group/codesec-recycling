@@ -52,9 +52,12 @@ name = "codesec-recycling"
 version = "0.1.0"
 dependencies = [
  "gloo-timers",
- "log",
- "wasm-logger",
+ "gloo-utils",
+ "leaflet",
+ "wasm-bindgen",
+ "web-sys",
  "yew",
+ "yew-router",
 ]
 
 [[package]]
@@ -161,6 +164,7 @@ version = "0.2.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "a8d5564e570a38b43d78bdc063374a0c3098c4f0d64005b12f9bbe87e869b6d7"
 dependencies = [
+ "futures-channel",
  "gloo-events",
  "js-sys",
  "wasm-bindgen",
@@ -234,6 +238,8 @@ version = "0.2.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "5fb7d06c1c8cc2a29bee7ec961009a0b2caa0793ee4900c2ffb348734ba1c8f9"
 dependencies = [
+ "futures-channel",
+ "futures-core",
  "js-sys",
  "wasm-bindgen",
 ]
@@ -311,6 +317,17 @@ name = "lazy_static"
 version = "1.4.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "e2abad23fbc42b3700f2f279844dc832adb2b2eb069b2df918f455c4e18cc646"
+
+[[package]]
+name = "leaflet"
+version = "0.2.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "123ba6fe730729266eac807e2c14cc543182574ce7ad7ab44f43eef2862e2910"
+dependencies = [
+ "js-sys",
+ "wasm-bindgen",
+ "web-sys",
+]
 
 [[package]]
 name = "log"
@@ -418,12 +435,16 @@ dependencies = [
 ]
 
 [[package]]
+name = "route-recognizer"
+version = "0.3.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "afab94fb28594581f62d981211a9a4d53cc8130bbcbbb89a0440d9b8e81a7746"
+
+[[package]]
 name = "ryu"
 version = "1.0.10"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "f3f6f92acf49d1b98f7a81226834412ada05458b7364277387724a237f062695"
-
-[[package]]
 name = "serde"
 version = "1.0.138"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -653,7 +674,7 @@ dependencies = [
 [[package]]
 name = "yew"
 version = "0.19.3"
-source = "git+https://github.com/yewstack/yew#11424bd840344e25db376a0c4997d0edb21d9238"
+source = "git+https://github.com/yewstack/yew/#423ef28afef52987654928e55d1f1ee0aed50c84"
 dependencies = [
  "console_error_panic_hook",
  "gloo",
@@ -676,12 +697,38 @@ dependencies = [
 [[package]]
 name = "yew-macro"
 version = "0.19.3"
-source = "git+https://github.com/yewstack/yew#11424bd840344e25db376a0c4997d0edb21d9238"
+source = "git+https://github.com/yewstack/yew/#423ef28afef52987654928e55d1f1ee0aed50c84"
 dependencies = [
  "boolinator",
  "once_cell",
  "prettyplease",
  "proc-macro-error",
+ "proc-macro2",
+ "quote",
+ "syn",
+]
+
+[[package]]
+name = "yew-router"
+version = "0.16.0"
+source = "git+https://github.com/yewstack/yew/#423ef28afef52987654928e55d1f1ee0aed50c84"
+dependencies = [
+ "gloo",
+ "js-sys",
+ "route-recognizer",
+ "serde",
+ "serde_urlencoded",
+ "wasm-bindgen",
+ "web-sys",
+ "yew",
+ "yew-router-macro",
+]
+
+[[package]]
+name = "yew-router-macro"
+version = "0.16.0"
+source = "git+https://github.com/yewstack/yew/#423ef28afef52987654928e55d1f1ee0aed50c84"
+dependencies = [
  "proc-macro2",
  "quote",
  "syn",

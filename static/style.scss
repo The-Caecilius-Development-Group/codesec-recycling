@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato&family=Oswald:wght@600&display=swap');
+@import "normalise";
+
 @import url('https://css.gg/shopping-bag.css');
 
 $grey: #85887E;
@@ -19,7 +21,7 @@ body {
 .main-flex {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    // align-items: center;
 }
 
 .header {
@@ -125,7 +127,64 @@ body {
     animation: show-counter-anim 0.5s;
 }
 
+
+#map { height: 180px; }
+
+body {
+    // those styles are irrelevant, just here for nicer presentation
+    display: flex;
+    flex-direction: column;
+  
+    #yew {
+      height: 400px;
+      width: 800px;
+      margin: 2em auto;
+    }
+  
+    .map {
+      height: 400px;
+    }
+  
+    .component-container {
+      border-radius: 0.5em;
+      padding: 1em;
+    }
+  
+    .map-container {
+    
+      border: 1px solid red;
+      margin-bottom: 1em;
+      margin-top: 1em;
+    }
+  
+    .control {
+      text-align: center;
+      border: 1px solid green;
+  
+      button {
+        margin: 0.5em;
+      }
+    }
+  }
+  
+.messages {
+    @extend .main-flex;
+    align-items: center;
+    font-family: "Lato", sans-serif;
+    font-size: 50px;    
+    color: #85887E;
+    outline: white solid 10px; 
+    background: white;
+    margin-bottom: 50px;
+    margin-top: 50px;
+}
+
+.id {
+    margin-bottom: 100px;
+}
+
 .pictogram-row {
     display: flex;
     flex-direction: row;
 }
+

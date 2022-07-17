@@ -7,6 +7,15 @@ edition = "2021"
 
 [dependencies]
 gloo-timers = "0.2.4"
+leaflet = "0.2.1"
+yew = { git = "https://github.com/yewstack/yew/", features = ["csr"] }
+yew-router = { git = "https://github.com/yewstack/yew.git" }
+wasm-bindgen = "0.2"
+gloo-utils = "0.1.4"
+
+[dependencies.web-sys]
+version = "0.3"
+features = ["HtmlAnchorElement", "console", "Window", "Document", "Navigator", "InputEvent"]
 log = "0.4.17"
 wasm-logger = "0.2.0"
 

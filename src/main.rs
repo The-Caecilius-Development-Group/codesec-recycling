@@ -1,21 +1,23 @@
-use yew::prelude::*;
-
+mod map;
 mod header;
 mod fact;
+mod messages;
+use yew::prelude::*;
+use map::MapComponent;
+use yew_router::prelude::*;
 
-struct App;
+#[derive(Clone, Routable, PartialEq)]
+enum Route {
+    #[at("/")]
+    Home,
+    #[not_found]
+    #[at("/404")]
+    NotFound
+}
 
-impl Component for App {
-    type Message = ();
-
-    type Properties = ();
-
-    fn create(_ctx: &Context<Self>) -> Self {
-        App
-    }
-
-    fn view(&self, _ctx: &Context<Self>) -> Html {
-        html! {
+#[function_component]
+pub fn App() -> Html{
+     html! {
             <div class={classes!("main-flex")}>
                 <header::Header />
                 <fact::Fact direction={fact::FactDirection::Left}>
@@ -28,12 +30,12 @@ impl Component for App {
                     <i class="gg-shopping-bag"></i>
                     </fact::pictogram::Pictogram>
                 </fact::Fact>
+                < MapComponent />
             </div>
         }
     }
 }
 
 fn main() {
-    wasm_logger::init(wasm_logger::Config::default());
     yew::Renderer::<App>::new().render();
 }
