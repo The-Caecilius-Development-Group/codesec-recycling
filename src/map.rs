@@ -52,6 +52,10 @@ impl Component for MapComponent {
             self.map.setView(&LatLng::new(51.509865, -0.118092), 11.0);
             add_tile_layer(&self.map);
             let marker = Marker::new(&LatLng::new(51.63544609737626, -0.4685434773325837));
+            let marker2 = Marker::new(&LatLng::new(51.58542665694916, -0.42451537395422306));
+            let marker3 = Marker::new(&LatLng::new(51.59061840484532, -0.32701039710345947));
+            marker2.addTo(&self.map);
+            marker3.addTo(&self.map);
             marker.addTo(&self.map);
         }
     }
@@ -65,12 +69,9 @@ impl Component for MapComponent {
     }
 
     fn view(&self, ctx: &Context<Self>) -> Html {
-        let text = format!("{}", self.n);
-        let print = ctx.link().callback(|_| Msg::Print);
         html! {
             <div class="map-container component-container">
                 {self.render_map()}
-                <button onclick={print}>{text}</button>
             </div>
         }
     }
